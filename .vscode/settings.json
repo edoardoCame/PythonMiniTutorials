@@ -1,8 +1,0 @@
-{
-    "settings": {
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.defaultInterpreterPath": "~\\ML\\.conda\\python.exe"
-}
-
-}
-
