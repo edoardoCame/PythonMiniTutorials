@@ -1,0 +1,42 @@
+// impostare orario 16:00 e 20:00 sul time frame 4H per ottenere l'apertura e la chiusura della candela delle 20.00 delle 4H 
+// NON IMPOSTARE ON BAR CLOSED
+//@version=5
+strategy("Strategia Buy 20:00 - Close 00:00", overlay=true, default_qty_value=100)
+
+// Orario di apertura e chiusura
+openHour = input(16, title="Ora di apertura")
+closeHour = input(20, title="Ora di chiusura")
+
+// Lunghezza della SMA 200
+sma200Length = input(200, title="Lunghezza MA")
+
+// Calcola l'ora attuale
+currentHour = hour(time)
+
+// Determina se è un giorno della settimana escluso (giovedì e sabato)
+isExcludedDay = dayofweek(time) == 5 or dayofweek(time) == 7
+
+// Variabile per tenere traccia dello stato della posizione
+var isOpen = false
+
+// Calcola la SMA 200
+sma200 = ta.sma(close, sma200Length)
+
+// Condizione di ingresso long (prezzo superiore alla SMA 200)
+enterLongCondition = not isExcludedDay and currentHour == openHour and not isOpen and close > sma200
+
+// Condizione di uscita long
+exitLongCondition = currentHour == closeHour and isOpen
+
+// Segnale di ingresso long
+if enterLongCondition
+    strategy.entry("Long", strategy.long)
+    isOpen := true
+
+// Segnale di uscita long
+if exitLongCondition
+    strategy.close("Long")
+    isOpen := false
+
+// Visualizza la SMA 200 sul grafico
+plot(sma200, title="SMA 200", color=color.blue, linewidth=2)
