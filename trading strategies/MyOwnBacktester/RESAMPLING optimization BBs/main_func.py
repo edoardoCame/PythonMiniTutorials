@@ -62,7 +62,7 @@ def backtest_bollinger_bands(data, window, num_std_devs, slippage = 0.00002, sta
         if positions[i-1] == positions[i]:
             equity[i] = equity[i-1] * (1 + strategy_returns[i])
         else:
-            equity[i] = equity[i-1] * (1 + strategy_returns[i]) - (equity[i-1] * 0.00002) - 2 #0.2 pips of slippage minus 2$ of fixed commission
+            equity[i] = equity[i-1] * (1 + strategy_returns[i]) - (equity[i-1] * slippage) - 2 #0.2 pips of slippage minus 2$ of fixed commission
 
 
     return equity
