@@ -9,8 +9,13 @@ Most of them discussed in posts on my LinkedIn: https://www.linkedin.com/in/edoa
 
 import requests
 
-# URL of the raw file on GitHub
-url = 'https://raw.githubusercontent.com/username/repository/branch/filename.py'
+URL of the raw file on GitHub
 
-# Fetch the content of the file and execute it
+```http
+url = 'https://raw.githubusercontent.com/username/repository/branch/filename.py'
+```
+
+Fetch the content of the file and execute it
+```http
 exec(requests.get(url).text)
+```
