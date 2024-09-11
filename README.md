@@ -15,7 +15,7 @@ URL of the raw file on GitHub
 url = 'https://raw.githubusercontent.com/username/repository/branch/filename.py'
 ```
 
-Fetch the content of the file and execute it
+Fetch the content of the file and execute it. This way python automatically loads the script with all the respective functions/libraries into your enviroment.
 ```
 exec(requests.get(url).text)
 ```
