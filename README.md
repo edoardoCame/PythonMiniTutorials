@@ -11,11 +11,11 @@ import requests
 
 URL of the raw file on GitHub
 
-```http
+```
 url = 'https://raw.githubusercontent.com/username/repository/branch/filename.py'
 ```
 
 Fetch the content of the file and execute it
-```http
+```
 exec(requests.get(url).text)
 ```
