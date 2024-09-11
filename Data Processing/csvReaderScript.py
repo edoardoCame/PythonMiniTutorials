@@ -2,8 +2,6 @@ import pandas as pd
 import os
 
 
-
-
 #define the ReadCSV function:
 def ReadCSVfiles(files_path, wannaprint=False): #in the files_path argument, you should pass the path to the folder containing the csv files
     files = os.listdir(files_path)
