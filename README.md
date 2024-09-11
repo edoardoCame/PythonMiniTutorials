@@ -1,6 +1,7 @@
 # A collection of mini tutorials
 
 Most of them discussed in posts on my LinkedIn: https://www.linkedin.com/in/edoardo-camerinelli/
+Contact me at: edoardo.camerinelli@usi.ch
 
 
 
@@ -15,3 +16,5 @@ Fetch the content of the file and execute it. This way python automatically load
 ```
 exec(requests.get(url).text)
 ```
+
+
