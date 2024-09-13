@@ -1336,3 +1336,108 @@ Alternately, you can install this by running `pip install pycaret[models]`
 2024-09-09 18:12:40,140:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\joblib\externals\loky\process_executor.py:1076: UserWarning: On Windows, max_workers cannot exceed 61 due to limitations of the operating system.
   warnings.warn(
 
+2024-09-09 18:18:56,745:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:18:56,763:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:19:40,379:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:19:40,400:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:19:56,237:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:19:56,255:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:20:41,506:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:20:41,528:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:21:11,787:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:21:11,837:WARNING:c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\sklearn\metrics\_regression.py:483: FutureWarning: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+  warnings.warn(
+
+2024-09-09 18:21:12,878:INFO:Calculating mean and std
+2024-09-09 18:21:12,879:INFO:Creating metrics dataframe
+2024-09-09 18:21:13,015:INFO:Uploading results into container
+2024-09-09 18:21:13,016:INFO:Uploading model into container now
+2024-09-09 18:21:13,016:INFO:_master_model_container: 1
+2024-09-09 18:21:13,017:INFO:_display_container: 2
+2024-09-09 18:21:13,017:INFO:ARIMA(seasonal_order=(0, 1, 0, 2))
+2024-09-09 18:21:13,017:INFO:create_model() successfully completed......................................
+2024-09-09 18:21:13,182:INFO:SubProcess create_model() end ==================================
+2024-09-09 18:21:13,182:INFO:Creating metrics dataframe
+2024-09-09 18:21:13,188:INFO:Initializing Auto ARIMA
+2024-09-09 18:21:13,188:INFO:Total runtime is 8.56979771455129 minutes
+2024-09-09 18:21:13,191:INFO:SubProcess create_model() called ==================================
+2024-09-09 18:21:13,191:INFO:Initializing create_model()
+2024-09-09 18:21:13,191:INFO:create_model(self=<pycaret.time_series.forecasting.oop.TSForecastingExperiment object at 0x00000219EDA987D0>, estimator=auto_arima, fold=None, round=4, cross_validation=True, predict=True, fit_kwargs={}, groups=None, refit=False, probability_threshold=None, experiment_custom_tags=None, verbose=False, system=False, add_to_model_list=True, metrics=None, display=<pycaret.internal.display.display.CommonDisplay object at 0x00000219804CF2D0>, model_only=True, return_train_score=False, error_score=0.0, kwargs={})
+2024-09-09 18:21:13,192:INFO:Checking exceptions
+2024-09-09 18:21:13,192:INFO:Importing libraries
+2024-09-09 18:21:13,192:INFO:Copying training dataset
+2024-09-09 18:21:13,871:INFO:Defining folds
+2024-09-09 18:21:13,872:INFO:Declaring metric variables
+2024-09-09 18:21:13,877:INFO:Importing untrained model
+2024-09-09 18:21:13,881:INFO:Auto ARIMA Imported successfully
+2024-09-09 18:21:13,993:INFO:Starting cross validation
+2024-09-09 18:21:13,994:INFO:Cross validating with ExpandingWindowSplitter(fh=ForecastingHorizon([    1,     2,     3,     4,     5,     6,     7,     8,     9,    10,
+       ...
+       42991, 42992, 42993, 42994, 42995, 42996, 42997, 42998, 42999, 43000],
+      dtype='int32', length=43000, is_relative=True),
+                        initial_window=2677044, step_length=43000), n_jobs=128
+2024-09-09 18:21:16,152:WARNING:Exception in thread ExecutorManagerThread:
+2024-09-09 18:21:16,153:WARNING:Traceback (most recent call last):
+2024-09-09 18:21:16,153:WARNING:  File "c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\threading.py", line 1045, in _bootstrap_inner
+2024-09-09 18:21:16,166:WARNING:    self.run()
+2024-09-09 18:21:16,166:WARNING:  File "c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\joblib\externals\loky\process_executor.py", line 596, in run
+2024-09-09 18:21:16,166:WARNING:    result_item, is_broken, bpe = self.wait_result_broken_or_wakeup()
+2024-09-09 18:21:16,166:WARNING:                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-09-09 18:21:16,166:WARNING:  File "c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\site-packages\joblib\externals\loky\process_executor.py", line 654, in wait_result_broken_or_wakeup
+2024-09-09 18:21:16,167:WARNING:    ready = wait(readers + worker_sentinels)
+2024-09-09 18:21:16,167:WARNING:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-09-09 18:21:16,167:WARNING:  File "c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\multiprocessing\connection.py", line 896, in wait
+2024-09-09 18:21:16,177:WARNING:    ready_handles = _exhaustive_wait(waithandle_to_obj.keys(), timeout)
+2024-09-09 18:21:16,178:WARNING:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-09-09 18:21:16,178:WARNING:  File "c:\Users\camere\Conda_3.11_enviroment\.conda\Lib\multiprocessing\connection.py", line 828, in _exhaustive_wait
+2024-09-09 18:21:16,178:WARNING:    res = _winapi.WaitForMultipleObjects(L, False, timeout)
+2024-09-09 18:21:16,178:WARNING:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-09-09 18:21:16,184:WARNING:ValueError: need at most 63 handles, got a sequence of length 130
+2024-09-09 19:41:11,075:ERROR:Fit failed on ForecastingPipeline(steps=[('forecaster',
+                            TransformedTargetForecaster(steps=[('model',
+                                                                AutoARIMA(random_state=123,
+                                                                          sp=2,
+                                                                          suppress_warnings=True))]))])
+2024-09-09 19:41:11,076:ERROR:Unable to allocate 166. MiB for an array with shape (2720044, 4) and data type complex128
+2024-09-09 19:48:54,411:ERROR:Fit failed on ForecastingPipeline(steps=[('forecaster',
+                            TransformedTargetForecaster(steps=[('model',
+                                                                AutoARIMA(random_state=123,
+                                                                          sp=2,
+                                                                          suppress_warnings=True))]))])
+2024-09-09 19:48:54,412:ERROR:Unable to allocate 107. MiB for an array with shape (5, 2806044) and data type float64
+2024-09-09 20:19:25,821:ERROR:Fit failed on ForecastingPipeline(steps=[('forecaster',
+                            TransformedTargetForecaster(steps=[('model',
+                                                                AutoARIMA(random_state=123,
+                                                                          sp=2,
+                                                                          suppress_warnings=True))]))])
+2024-09-09 20:19:25,821:ERROR:Unable to allocate 109. MiB for an array with shape (5, 1, 2849044) and data type float64
+2024-09-09 21:15:41,279:ERROR:Fit failed on ForecastingPipeline(steps=[('forecaster',
+                            TransformedTargetForecaster(steps=[('model',
+                                                                AutoARIMA(random_state=123,
+                                                                          sp=2,
+                                                                          suppress_warnings=True))]))])
+2024-09-09 21:15:41,279:ERROR:Unable to allocate 61.3 MiB for an array with shape (3, 2677044) and data type float64
+2024-09-10 00:26:52,982:ERROR:Fit failed on ForecastingPipeline(steps=[('forecaster',
+                            TransformedTargetForecaster(steps=[('model',
+                                                                AutoARIMA(random_state=123,
+                                                                          sp=2,
+                                                                          suppress_warnings=True))]))])
+2024-09-10 00:26:52,982:ERROR:Unable to allocate 21.1 MiB for an array with shape (2763044,) and data type float64
