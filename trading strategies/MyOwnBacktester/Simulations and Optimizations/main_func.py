@@ -6,7 +6,7 @@ import numpy as np
 
 #Create a backtesting function that backtests based on Bollinger Bands
 @njit(fastmath=True) #We use the njit decorator to compile the function to machine code, which makes it faster
-def backtest_bollinger_bands(data, window, num_std_devs, slippage = 0.00002, starting_cash=10000):
+def backtest_bollinger_bands(data, window, num_std_devs, slippage = 0.00002, starting_cash=10000, dollarfee=2):
     
     
     #-------------------Bollinger Bands-------------------
@@ -62,7 +62,7 @@ def backtest_bollinger_bands(data, window, num_std_devs, slippage = 0.00002, sta
         if positions[i-1] == positions[i]:
             equity[i] = equity[i-1] * (1 + strategy_returns[i])
         else:
-            equity[i] = equity[i-1] * (1 + strategy_returns[i]) - (equity[i-1] * slippage) - 2 #0.2 pips of slippage minus 2$ of fixed commission
+            equity[i] = equity[i-1] * (1 + strategy_returns[i]) - (equity[i-1] * slippage) - dollarfee #0.2 pips of slippage minus 2$ of fixed commission
 
 
     return equity
