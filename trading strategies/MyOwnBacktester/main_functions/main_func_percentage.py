@@ -1,4 +1,5 @@
 #Create a backtesting function that backtests based on Bollinger Bands
+import numpy as np
 from numba import njit #We import the njit decorator from the numba library
 @njit(fastmath=True) #We use the njit decorator to compile the function to machine code, which makes it faster
 def backtest_bollinger_bands(data, window, num_std_devs, fees_percentage=0.015, starting_cash=10000):
