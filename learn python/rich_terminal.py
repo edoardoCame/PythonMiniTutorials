@@ -16,7 +16,7 @@ def generate_table():
     table.add_row("Memory Usage", f"{random.randint(0, 100)}%")
     return table
 
-with Live(generate_table(), refresh_per_second=4) as live:
+with Live(generate_table(), refresh_per_second=1) as live:
     try:
         while True:
             time.sleep(1)  # Update 1 times per second
