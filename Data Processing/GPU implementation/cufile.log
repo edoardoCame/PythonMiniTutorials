@@ -257,3 +257,10 @@
  13-12-2024 19:59:45:239 [pid=3714093 tid=3714441] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
  13-12-2024 19:59:45:239 [pid=3714093 tid=3714441] NOTICE  cufio-drv:727 running in compatible mode
  13-12-2024 19:59:45:526 [pid=3714093 tid=3714441] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda4
+ 13-12-2024 20:17:49:829 [pid=4041838 tid=4042604] ERROR  0:140 unable to load,  liburcu-bp.so.6 
+
+ 13-12-2024 20:17:49:829 [pid=4041838 tid=4042604] ERROR  0:140 unable to load,  liburcu-bp.so.1 
+
+ 13-12-2024 20:17:49:829 [pid=4041838 tid=4042604] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
+ 13-12-2024 20:17:49:829 [pid=4041838 tid=4042604] NOTICE  cufio-drv:727 running in compatible mode
+ 13-12-2024 20:17:50:135 [pid=4041838 tid=4042604] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda4
