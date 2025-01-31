@@ -62,7 +62,7 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
     if filter == 1:
         #Filter by hours
         data.index = cf.to_datetime(data['timestamp'])   
-        data.loc[(data.index.hour > 20) | (data.index.hour < 5), 'Strategy Returns'] = 0
+        data.loc[((data.index.hour < 20) & (data.index.hour > 15 ))  | (data.index.hour < 5), 'Strategy Returns'] = 0
     elif filter == 2:
         data.index = cf.to_datetime(data['timestamp'])   
         data.loc[(data.index.hour < 20) & (data.index.hour > 5), 'Strategy Returns'] = 0
@@ -76,11 +76,6 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
     
     final_equity = data['Cumulative Returns'].iloc[-1] * initial_capital
     
-
-    #import matplotlib.pyplot as plt
-    #data.dropna(inplace=True)   
-    #plt.plot(data['Cumulative Returns'], label='Strategy Returns')
-    #plt.show()
 
     if return_series == True:
         return data['Cumulative Returns']

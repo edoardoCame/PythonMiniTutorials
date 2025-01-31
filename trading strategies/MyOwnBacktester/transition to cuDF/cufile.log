@@ -68,3 +68,24 @@
  31-01-2025 14:42:59:570 [pid=14000 tid=14000] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
  31-01-2025 14:42:59:570 [pid=14000 tid=14000] NOTICE  cufio-drv:727 running in compatible mode
  31-01-2025 14:42:59:847 [pid=14000 tid=14000] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda5
+ 31-01-2025 16:28:36:156 [pid=23726 tid=23726] ERROR  0:140 unable to load,  liburcu-bp.so.6 
+
+ 31-01-2025 16:28:36:156 [pid=23726 tid=23726] ERROR  0:140 unable to load,  liburcu-bp.so.1 
+
+ 31-01-2025 16:28:36:156 [pid=23726 tid=23726] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
+ 31-01-2025 16:28:36:156 [pid=23726 tid=23726] NOTICE  cufio-drv:727 running in compatible mode
+ 31-01-2025 16:28:36:432 [pid=23726 tid=23726] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda5
+ 31-01-2025 16:49:39:806 [pid=24871 tid=24871] ERROR  0:140 unable to load,  liburcu-bp.so.6 
+
+ 31-01-2025 16:49:39:807 [pid=24871 tid=24871] ERROR  0:140 unable to load,  liburcu-bp.so.1 
+
+ 31-01-2025 16:49:39:807 [pid=24871 tid=24871] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
+ 31-01-2025 16:49:39:807 [pid=24871 tid=24871] NOTICE  cufio-drv:727 running in compatible mode
+ 31-01-2025 16:49:40:83 [pid=24871 tid=24871] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda5
+ 31-01-2025 17:01:39:970 [pid=26074 tid=26074] ERROR  0:140 unable to load,  liburcu-bp.so.6 
+
+ 31-01-2025 17:01:39:970 [pid=26074 tid=26074] ERROR  0:140 unable to load,  liburcu-bp.so.1 
+
+ 31-01-2025 17:01:39:970 [pid=26074 tid=26074] WARN   0:168 failed to open /proc/driver/nvidia-fs/devcount  error: No such file or directory
+ 31-01-2025 17:01:39:970 [pid=26074 tid=26074] NOTICE  cufio-drv:727 running in compatible mode
+ 31-01-2025 17:01:40:251 [pid=26074 tid=26074] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/sda5
