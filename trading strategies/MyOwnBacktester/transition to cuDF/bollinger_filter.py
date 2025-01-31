@@ -54,7 +54,7 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
     data['Order Triggered'] = data['Position'] != data['Position'].shift(1)
 
     # Subtract the fee from the strategy returns on those days
-    data.loc[data['Order Triggered'], 'Strategy Returns'] -= fee_percentage
+    data.loc[data['Order Triggered'], 'Strategy Returns'] -= (fee_percentage / 100)
 
 
 
@@ -72,14 +72,15 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
 
     # Calculate cumulative returns
     data['Cumulative Returns'] = (1 + data['Strategy Returns']).cumprod()
-    data['Buy & Hold Returns'] = (1 + data['Returns']).cumprod()
+    
     
     final_equity = data['Cumulative Returns'].iloc[-1] * initial_capital
     
-    import matplotlib.pyplot as plt
-    data.dropna(inplace=True)   
-    plt.plot(data['Cumulative Returns'], label='Strategy Returns')
-    plt.show()
+
+    #import matplotlib.pyplot as plt
+    #data.dropna(inplace=True)   
+    #plt.plot(data['Cumulative Returns'], label='Strategy Returns')
+    #plt.show()
 
     if return_series == True:
         return data['Cumulative Returns']
@@ -87,10 +88,4 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
         return final_equity
 
 
-
-eurgbp = cf.read_csv('/home/edoardocame/Desktop/python_dir/data/eurgbp-m1-bid-2015-01-01-2025-01-30T14:40.csv')
-
-backtest_bollinger_strategy(data= eurgbp, initial_capital=100, fee_percentage=0.0001, 
-                                lookback=60, sdev=6, return_series=False, leverage=10,
-                                filter=True)
 
