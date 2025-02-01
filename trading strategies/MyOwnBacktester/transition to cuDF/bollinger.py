@@ -52,7 +52,7 @@ def backtest_bollinger_strategy(data, initial_capital=100, fee_percentage=0.0001
     data['Order Triggered'] = data['Position'] != data['Position'].shift(1)
 
     # Subtract the fee from the strategy returns on those days
-    data.loc[data['Order Triggered'], 'Strategy Returns'] -= fee_percentage
+    data.loc[data['Order Triggered'], 'Strategy Returns'] -= (fee_percentage / 100)
 
     #Set leverage
     data['Strategy Returns'] = data['Strategy Returns'] * leverage
