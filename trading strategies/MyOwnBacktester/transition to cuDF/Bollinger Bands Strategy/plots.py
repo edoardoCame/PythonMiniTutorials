@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-my_combinations = pd.read_csv('/home/edoardocame/Desktop/python_dir/PythonMiniTutorials/trading strategies/MyOwnBacktester/transition to cuDF/my_combinations_results.csv')
+my_combinations = pd.read_csv('/home/edoardo/Desktop/python_dir/data/my_combinations_results.csv')
 
 
 z = my_combinations['result'].values
