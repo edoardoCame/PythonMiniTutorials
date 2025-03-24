@@ -220,4 +220,5 @@ def backtest_bb_strategy(data, lookback, sdev):
 data = dd.read_csv('/home/edoardo/Desktop/python_dir/data/EURGBP_polygon.csv', 
                   parse_dates=['Timestamp'])  # Capital T in Timestamp
 data = data.set_index('Timestamp')  # Capital T in Timestamp
-results, trades = backtest_bb_strategy(data, lookback=60, sdev=6)
+results, trades = backtest_bb_strategy(data, lookback=530, sdev=5)
+#higher lookbacks lead to higher performance
