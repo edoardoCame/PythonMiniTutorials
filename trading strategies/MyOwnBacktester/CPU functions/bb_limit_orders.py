@@ -59,17 +59,22 @@ def backtest_bollinger_bands_strategy(open_prices, high_prices, low_prices, clos
     Returns:
         pip_returns: Array of returns in pips for each trade
         trade_hours: Array of hours when trades were executed
+        entry_indices: Array of indices when trades were entered
+        exit_indices: Array of indices when trades were exited
         equity_curve: Cumulative sum of pip_returns
     """
     n = len(close_prices)
     pip_returns = []
     trade_hours = []
+    entry_indices = []  # Store entry bar indices
+    exit_indices = []   # Store exit bar indices
     equity_curve = np.zeros(n)
     
     # Trading state variables
     in_long = False
     in_short = False
     entry_price = 0.0
+    entry_idx = 0       # Store the index when a trade is entered
     
     for i in range(1, n):
         # Skip if we don't have a valid Bollinger Band value yet
@@ -87,6 +92,8 @@ def backtest_bollinger_bands_strategy(open_prices, high_prices, low_prices, clos
                 pips_gained = (exit_price - entry_price) / pip_value
                 pip_returns.append(pips_gained)
                 trade_hours.append(hour_of_day[i])
+                entry_indices.append(entry_idx)  # Store entry index
+                exit_indices.append(i)  # Store exit index
                 in_long = False
                 equity_curve[i] = equity_curve[i-1] + pips_gained
             else:
@@ -99,6 +106,8 @@ def backtest_bollinger_bands_strategy(open_prices, high_prices, low_prices, clos
                 pips_gained = (entry_price - exit_price) / pip_value
                 pip_returns.append(pips_gained)
                 trade_hours.append(hour_of_day[i])
+                entry_indices.append(entry_idx)  # Store entry index
+                exit_indices.append(i)  # Store exit index
                 in_short = False
                 equity_curve[i] = equity_curve[i-1] + pips_gained
             else:
@@ -111,16 +120,18 @@ def backtest_bollinger_bands_strategy(open_prices, high_prices, low_prices, clos
             # Long entry: Check if price touched lower band with a limit order
             if low_prices[i] <= lower_band[i-1]:  # Using previous bar's lower band for the limit order
                 entry_price = lower_band[i-1]
+                entry_idx = i
                 in_long = True
                 
             # Short entry: Check if price touched upper band with a limit order
             elif high_prices[i] >= upper_band[i-1]:  # Using previous bar's upper band for the limit order
                 entry_price = upper_band[i-1]
+                entry_idx = i
                 in_short = True
     
-    return np.array(pip_returns), np.array(trade_hours), equity_curve
+    return np.array(pip_returns), np.array(trade_hours), np.array(entry_indices), np.array(exit_indices), equity_curve
 
-def backtest_bb_strategy(data, lookback, sdev):
+def backtest_bb_strategy(data, lookback, sdev, plot=True):
     """
     Main backtesting function for Bollinger Bands strategy.
     
@@ -128,6 +139,7 @@ def backtest_bb_strategy(data, lookback, sdev):
         data: Dask DataFrame with OHLC data
         lookback: Window parameter for the SMA
         sdev: Standard deviation parameter for the Bollinger Bands
+        plot: Whether to display plots (default: True)
     
     Returns:
         DataFrame with backtest results and trades DataFrame
@@ -160,7 +172,7 @@ def backtest_bb_strategy(data, lookback, sdev):
     df['lower_band'] = lower_band
     
     # Run the backtest
-    pip_returns, trade_hours, equity_curve = backtest_bollinger_bands_strategy(
+    pip_returns, trade_hours, entry_indices, exit_indices, equity_curve = backtest_bollinger_bands_strategy(
         open_array, high_array, low_array, close_array, 
         middle_band, upper_band, lower_band, hour_array
     )
@@ -178,30 +190,45 @@ def backtest_bb_strategy(data, lookback, sdev):
     # Create a DataFrame for trades
     trades_df = pd.DataFrame({
         'pip_return': pip_returns,
-        'hour': trade_hours
+        'hour': trade_hours,
+        'entry_index': entry_indices,
+        'exit_index': exit_indices
     })
     
+    # Calculate trade durations in minutes
+    if len(trades_df) > 0:
+        # Get timestamps for entries and exits
+        trades_df['entry_time'] = df.index[trades_df['entry_index']].values
+        trades_df['exit_time'] = df.index[trades_df['exit_index']].values
+        
+        # Calculate duration in minutes
+        trades_df['duration_minutes'] = (trades_df['exit_time'] - trades_df['entry_time']).dt.total_seconds() / 60
+        avg_duration_minutes = trades_df['duration_minutes'].mean()
+    else:
+        avg_duration_minutes = 0
+    
     # Plot results
-    fig, axes = plt.subplots(2, 1, figsize=(14, 10))
-    
-    # Plot 1: Average profit by hour
-    hourly_performance = trades_df.groupby('hour')['pip_return'].mean()
-    hourly_performance.plot(kind='bar', ax=axes[0], color='darkblue', alpha=0.7)
-    axes[0].set_title('Average Profit in Pips by Hour')
-    axes[0].set_xlabel('Hour of Day')
-    axes[0].set_ylabel('Average Pips')
-    axes[0].axhline(y=0, color='r', linestyle='-', alpha=0.3)
-    axes[0].grid(True, alpha=0.3)
-    
-    # Plot 2: Equity curve
-    df['equity_curve'].plot(ax=axes[1], color='green')
-    axes[1].set_title('Equity Curve (Cumulative Pips)')
-    axes[1].set_xlabel('Date')
-    axes[1].set_ylabel('Cumulative Pips')
-    axes[1].grid(True, alpha=0.3)
-    
-    plt.tight_layout()
-    plt.show()
+    if plot:
+        fig, axes = plt.subplots(2, 1, figsize=(14, 10))
+        
+        # Plot 1: Average profit by hour
+        hourly_performance = trades_df.groupby('hour')['pip_return'].mean()
+        hourly_performance.plot(kind='bar', ax=axes[0], color='darkblue', alpha=0.7)
+        axes[0].set_title('Average Profit in Pips by Hour')
+        axes[0].set_xlabel('Hour of Day')
+        axes[0].set_ylabel('Average Pips')
+        axes[0].axhline(y=0, color='r', linestyle='-', alpha=0.3)
+        axes[0].grid(True, alpha=0.3)
+        
+        # Plot 2: Equity curve
+        df['equity_curve'].plot(ax=axes[1], color='green')
+        axes[1].set_title('Equity Curve (Cumulative Pips)')
+        axes[1].set_xlabel('Date')
+        axes[1].set_ylabel('Cumulative Pips')
+        axes[1].grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        plt.show()
     
     # Print performance summary
     print(f"Backtest Results for Bollinger Bands Strategy (Lookback: {lookback}, StdDev: {sdev})")
@@ -210,15 +237,17 @@ def backtest_bb_strategy(data, lookback, sdev):
     print(f"Win Rate: {win_rate:.2%}")
     print(f"Average Win: {avg_win:.2f} pips")
     print(f"Average Loss: {avg_loss:.2f} pips")
+    print(f"Average Trade Duration: {avg_duration_minutes:.2f} minutes")
     
     return df, trades_df
 
 
 
 #######################
-# Example usage:
-data = dd.read_csv('/home/edoardo/Desktop/python_dir/data/EURGBP_polygon.csv', 
-                  parse_dates=['Timestamp'])  # Capital T in Timestamp
-data = data.set_index('Timestamp')  # Capital T in Timestamp
-results, trades = backtest_bb_strategy(data, lookback=530, sdev=5)
-#higher lookbacks lead to higher performance
+# Example usage code should only run when script is executed directly
+if __name__ == "__main__":
+    data = dd.read_csv('/home/edoardo/Desktop/python_dir/data/EURGBP_polygon.csv', 
+                    parse_dates=['Timestamp'])  # Capital T in Timestamp
+    data = data.set_index('Timestamp')  # Capital T in Timestamp
+    results, trades = backtest_bb_strategy(data, lookback=120, sdev=5)
+    #higher lookbacks lead to higher performance
